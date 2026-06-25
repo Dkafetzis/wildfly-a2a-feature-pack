@@ -13,7 +13,7 @@
     <artifactId>wildfly-a2a-testsuite-integration-rest</artifactId>
     <packaging>jar</packaging>
 
-    <name>WildFly A2A Feature Pack - Testsuite - Integration - REST</name>
+    <name>WildFly A2A Feature-Pack - Testsuite - Integration - REST</name>
 
     <dependencies>
         <!-- A2A SDK client transport -->

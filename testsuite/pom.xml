@@ -14,7 +14,7 @@
     <artifactId>wildfly-a2a-testsuite-parent</artifactId>
     <packaging>pom</packaging>
 
-    <name>WildFly A2A Feature Pack - Testsuite</name>
+    <name>WildFly A2A Feature-Pack - Testsuite</name>
 
     <modules>
         <module>integration</module>

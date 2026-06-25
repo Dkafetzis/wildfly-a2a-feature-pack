@@ -20,7 +20,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 
 /**
- * Integration test for A2A REST (HTTP-JSON) transport on WildFly with the A2A feature pack.
+ * Integration test for A2A REST (HTTP-JSON) transport on WildFly with the A2A feature-pack.
  *
  * The A2A SDK dependencies are provided by the A2A subsystem modules automatically.
  * Only test-specific classes need to be bundled in the WAR.

@@ -17,8 +17,8 @@
     <artifactId>wildfly-a2a-tck</artifactId>
     <packaging>war</packaging>
 
-    <name>WildFly A2A Feature Pack - TCK</name>
-    <description>TCK server for running the A2A protocol TCK against WildFly with the A2A feature pack</description>
+    <name>WildFly A2A Feature-Pack - TCK</name>
+    <description>TCK server for running the A2A protocol TCK against WildFly with the A2A feature-pack</description>
 
     <properties>
         <jboss.home>${project.build.directory}/wildfly</jboss.home>
@@ -34,7 +34,7 @@
             <artifactId>a2a-java-sdk-tck-sut</artifactId>
             <version>${version.sdk}</version>
             <exclusions>
-                <!-- Exclude all dependencies - they are provided by the A2A feature pack -->
+                <!-- Exclude all dependencies - they are provided by the A2A feature-pack -->
                 <exclusion>
                     <groupId>*</groupId>
                     <artifactId>*</artifactId>
@@ -69,13 +69,13 @@
                             <artifactId>wildfly-galleon-pack</artifactId>
                             <version>${version.org.wildfly}</version>
                         </feature-pack>
-                        <!-- gRPC feature pack (required for a2a-server-grpc layer) -->
+                        <!-- gRPC feature-pack (required for a2a-server-grpc layer) -->
                         <feature-pack>
                             <groupId>org.wildfly.grpc</groupId>
                             <artifactId>wildfly-grpc-feature-pack</artifactId>
                             <version>${version.wildfly.grpc}</version>
                         </feature-pack>
-                        <!-- A2A feature pack -->
+                        <!-- A2A feature-pack -->
                         <feature-pack>
                             <groupId>org.wildfly.a2a</groupId>
                             <artifactId>wildfly-a2a-feature-pack</artifactId>

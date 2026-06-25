@@ -28,7 +28,7 @@
         <package name="org.a2aproject.sdk.client-transport-grpc"/>
         <package name="org.a2aproject.sdk.client-transport-rest"/>
         <!-- Third-party dependencies -->
-        <!-- For layers that do NOT bring in the GRPC feature pack with an updated protobuf version -->
+        <!-- For layers that do NOT bring in the GRPC feature-pack with an updated protobuf version -->
         <!-- we need to bring an up-to-date one ourselves, since WildFly uses a very old and incompatible version -->
         <!-- TODO remove once WildFly catches up -->
         <package name="com.google.protobuf"/>

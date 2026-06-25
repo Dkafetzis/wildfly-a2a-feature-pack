@@ -16,8 +16,8 @@
     <artifactId>wildfly-a2a-feature-pack</artifactId>
     <packaging>pom</packaging>
 
-    <name>WildFly A2A Feature Pack</name>
-    <description>Feature pack providing A2A protocol support for WildFly</description>
+    <name>WildFly A2A Feature-Pack</name>
+    <description>Feature-pack providing A2A protocol support for WildFly</description>
 
     <licenses>
         <license>
