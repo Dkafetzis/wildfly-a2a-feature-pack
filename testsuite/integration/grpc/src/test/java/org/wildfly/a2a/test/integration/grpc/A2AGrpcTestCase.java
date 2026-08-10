@@ -26,7 +26,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.jupiter.api.AfterAll;
 
 /**
- * Integration test for A2A gRPC transport on WildFly with the A2A feature pack.
+ * Integration test for A2A gRPC transport on WildFly with the A2A feature-pack.
  *
  * The A2A subsystem registers the WildFlyGrpcHandler with the gRPC subsystem's deployment registry during the INSTALL phase.
  */

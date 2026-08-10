@@ -79,7 +79,7 @@ jobs:
           echo "SDK_VERSION=${VERSION}" >> "$GITHUB_ENV"
         working-directory: a2a-java
 
-      - name: Build the Feature pack and provision the TCK server
+      - name: Build the feature-pack and provision the TCK server
         run: ./mvnw -B -ntp install -Dversion.sdk=${SDK_VERSION}
 
       - name: Set up Python

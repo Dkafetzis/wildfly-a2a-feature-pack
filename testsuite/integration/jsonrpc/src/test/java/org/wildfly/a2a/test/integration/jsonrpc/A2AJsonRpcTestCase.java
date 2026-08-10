@@ -15,7 +15,7 @@ import org.jboss.arquillian.junit5.container.annotation.ArquillianTest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 /**
- * Integration test for A2A JSON-RPC transport on WildFly with the A2A feature pack.
+ * Integration test for A2A JSON-RPC transport on WildFly with the A2A feature-pack.
  *
  * All A2A SDK dependencies are provided by the A2A subsystem modules automatically.
  */

@@ -13,7 +13,7 @@
     <artifactId>wildfly-a2a-testsuite-integration-grpc</artifactId>
     <packaging>jar</packaging>
 
-    <name>WildFly A2A Feature Pack - Testsuite - Integration - gRPC</name>
+    <name>WildFly A2A Feature-Pack - Testsuite - Integration - gRPC</name>
 
     <dependencies>
         <!-- A2A SDK client transport -->
@@ -80,14 +80,14 @@
                             <artifactId>wildfly-a2a-feature-pack</artifactId>
                             <version>${project.version}</version>
                         </feature-pack>
-                        <!-- Add gRPC feature pack -->
+                        <!-- Add gRPC feature-pack -->
                         <feature-pack>
                             <groupId>org.wildfly.grpc</groupId>
                             <artifactId>wildfly-grpc-feature-pack</artifactId>
                             <version>${version.wildfly.grpc}</version>
                         </feature-pack>
                     </feature-packs>
-                    <!-- Set stability level for gRPC feature pack -->
+                    <!-- Set stability level for gRPC feature-pack -->
                     <galleon-options>
                         <stability-level>${wildfly.a2a.stability}</stability-level>
                     </galleon-options>

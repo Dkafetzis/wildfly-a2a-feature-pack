@@ -1,13 +1,13 @@
 :toc:
-= WildFly A2A Feature Pack
+= WildFly A2A Feature-Pack
 
 WARNING: This is an unsupported experimental POC implementation. Use with caution.
 
-A WildFly feature pack implementing the open-standard Agent2Agent (A2A) Protocol to enable universal interoperability and seamless collaboration between AI agents across diverse frameworks and vendors.
+A WildFly feature-pack implementing the open-standard Agent2Agent (A2A) Protocol to enable universal interoperability and seamless collaboration between AI agents across diverse frameworks and vendors.
 
 == Building
 
-Build the A2A feature pack:
+Build the A2A feature-pack:
 
 [source,bash]
 ----
@@ -18,7 +18,7 @@ cd wildfly-a2a-feature-pack
 
 == Provisioning with Maven
 
-Use the `wildfly-maven-plugin` to provision WildFly with the A2A feature pack.
+Use the `wildfly-maven-plugin` to provision WildFly with the A2A feature-pack.
 
 === A2A Server with All Transports (JSON-RPC, gRPC, REST)
 
@@ -72,7 +72,7 @@ For gRPC support, include the https://github.com/wildfly-extras/wildfly-grpc-fea
 
 == Layers
 
-The feature pack provides the following Galleon layers:
+The feature-pack provides the following Galleon layers:
 
 |===
 |Layer |Description
@@ -103,7 +103,7 @@ mvn clean test -pl testsuite/integration/http-json # HTTP-JSON only
 
 == Running the TCK
 
-The feature pack includes a TCK (Test Compatibility Kit) module that runs the official A2A protocol TCK against WildFly.
+The feature-pack includes a TCK (Test Compatibility Kit) module that runs the official A2A protocol TCK against WildFly.
 
 === Prerequisites
 
@@ -113,7 +113,7 @@ The feature pack includes a TCK (Test Compatibility Kit) module that runs the of
 
 === Build and Run TCK
 
-. Build the feature pack:
+. Build the feature-pack:
 
 [source,bash]
 ----
@@ -172,4 +172,4 @@ TCK Endpoints Reference
 * https://github.com/a2aproject/a2a-java[a2a-java] - Java SDK for A2A protocol
 * https://github.com/a2aproject/a2a-tck[a2a-tck] - Official A2A protocol TCK
 * https://github.com/wildfly-extras/a2a-jakarta[a2a-jakarta] - Jakarta EE server implementation of A2A Java SDK
-* https://github.com/wildfly-extras/wildfly-ai-feature-pack[wildfly-ai-feature-pack] - WildFly feature pack for AI/LLM integration (LangChain4j)
+* https://github.com/wildfly-extras/wildfly-ai-feature-pack[wildfly-ai-feature-pack] - WildFly feature-pack for AI/LLM integration (LangChain4j)

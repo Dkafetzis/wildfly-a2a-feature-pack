@@ -19,8 +19,8 @@
     <version>0.0.1.Alpha1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>WildFly A2A Feature Pack Parent</name>
-    <description>Parent POM for the WildFly A2A Feature Pack</description>
+    <name>WildFly A2A Feature-Pack Parent</name>
+    <description>Parent POM for the WildFly A2A Feature-Pack</description>
     <url>https://github.com/rhusar/wildfly-a2a-feature-pack</url>
 
     <licenses>
@@ -62,7 +62,7 @@
         <!-- TODO eventually this should default to the latest LTS at the time of publication; i.e. always compile with e.g. JDK 25 and test with older LTS versions -->
         <jdk.min.version>${maven.compiler.release}</jdk.min.version>
 
-        <!-- A2A Feature Pack configuration -->
+        <!-- A2A Feature-Pack configuration -->
         <wildfly.a2a.stability>experimental</wildfly.a2a.stability>
 
         <!-- WildFly dependencies -->
