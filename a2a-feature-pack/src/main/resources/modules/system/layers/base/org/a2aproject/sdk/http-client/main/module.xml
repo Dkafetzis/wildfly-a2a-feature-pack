@@ -19,6 +19,7 @@
         <module name="org.a2aproject.sdk.common"/>
         <module name="org.a2aproject.sdk.jsonrpc-common"/>
         <module name="org.a2aproject.sdk.spec"/>
+        <module name="org.a2aproject.sdk.spec-grpc"/>
         <module name="org.slf4j"/>
     </dependencies>
 </module>
