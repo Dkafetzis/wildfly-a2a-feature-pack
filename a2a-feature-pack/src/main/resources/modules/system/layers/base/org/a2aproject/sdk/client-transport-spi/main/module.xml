@@ -16,6 +16,7 @@
     <dependencies>
         <module name="java.logging"/>
 
+        <module name="org.a2aproject.sdk.http-client"/>
         <module name="org.a2aproject.sdk.spec"/>
     </dependencies>
 </module>
