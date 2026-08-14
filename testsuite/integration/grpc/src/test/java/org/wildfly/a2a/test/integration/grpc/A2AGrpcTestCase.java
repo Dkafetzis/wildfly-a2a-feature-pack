@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.a2aproject.sdk.server.apps.common.AbstractA2AServerTest;
+import org.a2aproject.sdk.server.apps.common.TestTaskAuthorizationProvider;
 import org.a2aproject.sdk.client.ClientBuilder;
 import org.a2aproject.sdk.client.transport.grpc.GrpcTransport;
 import org.a2aproject.sdk.client.transport.grpc.GrpcTransportConfigBuilder;
@@ -63,7 +64,7 @@ public class A2AGrpcTestCase extends AbstractA2AServerTest {
 
     @Deployment
     public static WebArchive createTestArchive() throws Exception{
-        return ShrinkWrap.create(WebArchive.class, "ROOT.war")
+        WebArchive archive = ShrinkWrap.create(WebArchive.class, "ROOT.war")
                 // RestAssured libraries needed by AbstractA2AServerTest
                 .addAsLibrary(getJarForClass(RestAssured.class))
                 .addAsLibrary(getJarForClass(ObjectDeserializationContext.class))
@@ -76,6 +77,13 @@ public class A2AGrpcTestCase extends AbstractA2AServerTest {
                 .addAsWebInfResource("WEB-INF/web.xml", "web.xml")
                 // Test properties for AgentCardProducer
                 .addAsResource("a2a-requesthandler-test.properties");
+
+        // TestTaskAuthorizationProvider gates itself with Quarkus' @IfBuildProperty, which WildFly does not
+        // recognise, so the bean would always be active and deny every unauthenticated request.
+        archive.delete("/WEB-INF/classes/"
+                + TestTaskAuthorizationProvider.class.getName().replace('.', '/') + ".class");
+
+        return archive;
     }
 
     static JavaArchive getJarForClass(Class<?> clazz) throws Exception {
@@ -103,10 +111,9 @@ public class A2AGrpcTestCase extends AbstractA2AServerTest {
     /**
      * Request-scoped beans are not available on the agent executor threads when A2A is provided as a feature-pack.
      * a2a-jakarta overrides the SDK's {@code @Internal Executor} with an {@code @Alternative} producer backed by a
-     * {@code ManagedExecutorService} ({@code AsyncManagedExecutorServiceProducer}). Here that producer sits in a JBoss
-     * module rather than in the deployment, and beans from modules - or beans registered by a portable extension - are
-     * not visible to the injection point in {@code org.a2aproject.sdk.server-common}, so the SDK's own executor is
-     * always the one that wins.
+     * {@code ManagedExecutorService} ({@code AsyncManagedExecutorServiceProducer}). Here that producer sits in the
+     * {@code org.wildfly.a2a.jakarta.common} JBoss module, and the {@code @Alternative} is never selected for the
+     * injection point in {@code org.a2aproject.sdk.server-common}, so the SDK's own executor always wins.
      */
     @Test
     @Disabled("Request context propagation to the agent executor threads is not supported by the feature-pack")
@@ -122,5 +129,4 @@ public class A2AGrpcTestCase extends AbstractA2AServerTest {
     @Override
     public void testRequestScopedBeanAvailableOnAgentExecutorThreadStreaming() {
     }
-
 }

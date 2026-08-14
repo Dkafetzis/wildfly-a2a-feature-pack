@@ -28,6 +28,7 @@
         <module name="org.a2aproject.sdk.spec"/>
         <module name="org.a2aproject.sdk.spec-grpc"/>
         <module name="org.a2aproject.sdk.transport.jsonrpc"/>
+        <module name="org.wildfly.a2a.jakarta.common"/>
         <module name="org.slf4j"/>
     </dependencies>
 </module>

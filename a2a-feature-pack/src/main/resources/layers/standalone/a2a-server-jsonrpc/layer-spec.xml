@@ -14,7 +14,7 @@
     </dependencies>
     <packages>
         <package name="org.a2aproject.sdk.transport.jsonrpc"/>
+        <package name="org.wildfly.a2a.jakarta.common"/>
         <package name="org.wildfly.a2a.jakarta.jsonrpc"/>
-        <package name="org.wildfly.a2a.jakarta.jsonrpc.web"/>
     </packages>
 </layer-spec>
