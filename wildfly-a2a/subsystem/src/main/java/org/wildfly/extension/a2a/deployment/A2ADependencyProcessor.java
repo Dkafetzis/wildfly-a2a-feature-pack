@@ -58,9 +58,12 @@ public class A2ADependencyProcessor implements DeploymentUnitProcessor {
      * These are added as system dependencies with META-INF filters for CDI discovery.
      */
     private static final String[] JAKARTA_MODULES = {
+            "org.wildfly.a2a.jakarta.common",
             "org.wildfly.a2a.jakarta.jsonrpc",
+            "org.wildfly.a2a.jakarta.jsonrpc.web",
             "org.wildfly.a2a.jakarta.grpc",
-            "org.wildfly.a2a.jakarta.rest"
+            "org.wildfly.a2a.jakarta.rest",
+            "org.wildfly.a2a.jakarta.rest.web"
     };
 
     @Override

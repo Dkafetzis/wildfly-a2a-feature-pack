@@ -24,14 +24,14 @@ public class A2ACdiExtension implements Extension {
         ClassLoader classLoader = getClass().getClassLoader();
 
         // JSON-RPC transport
-        tryAddAnnotatedType(event, beanManager, "org.wildfly.extras.a2a.server.apps.jsonrpc.A2AServerResource", classLoader);
-        tryAddAnnotatedType(event, beanManager, "org.wildfly.extras.a2a.server.apps.jsonrpc.A2ARequestFilter", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.jsonrpc.web.A2AServerResource", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.jsonrpc.web.A2ARequestFilter", classLoader);
 
         // REST transport
-        tryAddAnnotatedType(event, beanManager, "org.wildfly.extras.a2a.server.apps.rest.A2ARestServerResource", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.rest.web.A2ARestServerResource", classLoader);
 
         // gRPC transport
-        tryAddAnnotatedType(event, beanManager, "org.wildfly.extras.a2a.server.apps.grpc.GrpcBeanInitializer", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.grpc.GrpcBeanInitializer", classLoader);
     }
 
     private void tryAddAnnotatedType(AfterTypeDiscovery event, BeanManager beanManager, String className, ClassLoader classLoader) {

@@ -10,7 +10,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly.a2a:a2a-java-sdk-jakarta-grpc}"/>
+        <artifact name="${org.wildfly.a2a:a2a-jakarta-grpc}"/>
     </resources>
 
     <dependencies>

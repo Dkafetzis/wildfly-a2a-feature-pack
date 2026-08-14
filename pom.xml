@@ -72,8 +72,8 @@
         <version.org.wildfly.galleon-plugins>8.1.7.Final</version.org.wildfly.galleon-plugins>
 
         <!-- A2A dependencies -->
-        <version.sdk>1.0.0.CR1</version.sdk>
-        <version.org.wildfly.a2a>1.0.0.Beta1</version.org.wildfly.a2a>
+        <version.sdk>1.0.0.Final</version.sdk>
+        <version.org.wildfly.a2a>1.0.0.CR1</version.org.wildfly.a2a>
 
         <!-- Third-party dependencies (from A2A SDK) -->
         <version.protobuf>4.35.0</version.protobuf>
@@ -271,7 +271,7 @@
             <!-- A2A SDK - Jakarta Implementations -->
             <dependency>
                 <groupId>org.wildfly.a2a</groupId>
-                <artifactId>a2a-java-sdk-jakarta-jsonrpc</artifactId>
+                <artifactId>a2a-jakarta-common</artifactId>
                 <version>${version.org.wildfly.a2a}</version>
                 <exclusions>
                     <exclusion>
@@ -282,7 +282,7 @@
             </dependency>
             <dependency>
                 <groupId>org.wildfly.a2a</groupId>
-                <artifactId>a2a-java-sdk-jakarta-grpc</artifactId>
+                <artifactId>a2a-jakarta-jsonrpc</artifactId>
                 <version>${version.org.wildfly.a2a}</version>
                 <exclusions>
                     <exclusion>
@@ -293,7 +293,40 @@
             </dependency>
             <dependency>
                 <groupId>org.wildfly.a2a</groupId>
-                <artifactId>a2a-java-sdk-jakarta-rest</artifactId>
+                <artifactId>a2a-jakarta-jsonrpc-web</artifactId>
+                <version>${version.org.wildfly.a2a}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>*</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.a2a</groupId>
+                <artifactId>a2a-jakarta-grpc</artifactId>
+                <version>${version.org.wildfly.a2a}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>*</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.a2a</groupId>
+                <artifactId>a2a-jakarta-rest</artifactId>
+                <version>${version.org.wildfly.a2a}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>*</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.a2a</groupId>
+                <artifactId>a2a-jakarta-rest-web</artifactId>
                 <version>${version.org.wildfly.a2a}</version>
                 <exclusions>
                     <exclusion>

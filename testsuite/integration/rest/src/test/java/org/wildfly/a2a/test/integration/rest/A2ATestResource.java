@@ -28,7 +28,7 @@ import org.a2aproject.sdk.spec.TaskPushNotificationConfig;
 import org.a2aproject.sdk.spec.Task;
 import org.a2aproject.sdk.spec.TaskArtifactUpdateEvent;
 import org.a2aproject.sdk.spec.TaskStatusUpdateEvent;
-import org.wildfly.extras.a2a.server.apps.rest.A2ARestServerResource;
+import org.wildfly.a2a.jakarta.rest.web.A2ARestServerResource;
 
 /**
  * REST endpoint for test operations.

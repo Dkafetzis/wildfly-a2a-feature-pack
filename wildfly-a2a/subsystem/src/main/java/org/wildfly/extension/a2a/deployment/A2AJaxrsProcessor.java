@@ -29,15 +29,15 @@ public class A2AJaxrsProcessor implements DeploymentUnitProcessor {
      * JAX-RS resource classes to register with RESTEasy.
      */
     private static final String[] JAXRS_RESOURCE_CLASSES = {
-            "org.wildfly.extras.a2a.server.apps.jsonrpc.A2AServerResource",
-            "org.wildfly.extras.a2a.server.apps.rest.A2ARestServerResource"
+            "org.wildfly.a2a.jakarta.jsonrpc.web.A2AServerResource",
+            "org.wildfly.a2a.jakarta.rest.web.A2ARestServerResource"
     };
 
     /**
      * JAX-RS provider classes to register with RESTEasy.
      */
     private static final String[] JAXRS_PROVIDER_CLASSES = {
-            "org.wildfly.extras.a2a.server.apps.jsonrpc.A2ARequestFilter"
+            "org.wildfly.a2a.jakarta.jsonrpc.web.A2ARequestFilter"
     };
 
     @Override

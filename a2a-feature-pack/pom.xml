@@ -133,15 +133,27 @@
         <!-- A2A SDK - Jakarta Implementations -->
         <dependency>
             <groupId>org.wildfly.a2a</groupId>
-            <artifactId>a2a-java-sdk-jakarta-jsonrpc</artifactId>
+            <artifactId>a2a-jakarta-common</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wildfly.a2a</groupId>
-            <artifactId>a2a-java-sdk-jakarta-grpc</artifactId>
+            <artifactId>a2a-jakarta-jsonrpc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wildfly.a2a</groupId>
-            <artifactId>a2a-java-sdk-jakarta-rest</artifactId>
+            <artifactId>a2a-jakarta-jsonrpc-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.a2a</groupId>
+            <artifactId>a2a-jakarta-grpc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.a2a</groupId>
+            <artifactId>a2a-jakarta-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.a2a</groupId>
+            <artifactId>a2a-jakarta-rest-web</artifactId>
         </dependency>
     </dependencies>
 
