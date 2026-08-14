@@ -36,7 +36,7 @@
         <!-- Jakarta implementation for deployment -->
         <dependency>
             <groupId>org.wildfly.a2a</groupId>
-            <artifactId>a2a-java-sdk-jakarta-grpc</artifactId>
+            <artifactId>a2a-jakarta-grpc</artifactId>
             <scope>test</scope>
         </dependency>
 

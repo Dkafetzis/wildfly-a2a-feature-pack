@@ -34,8 +34,8 @@ import io.grpc.ServerInterceptor;
 public class A2AGrpcServiceProcessor implements DeploymentUnitProcessor {
 
     private static final String GRPC_SERVER_CAPABILITY = "org.wildfly.grpc.server";
-    private static final String GRPC_HANDLER_CLASS = "org.wildfly.extras.a2a.server.apps.grpc.WildFlyGrpcHandler";
-    private static final String GRPC_INTERCEPTOR_CLASS = "org.wildfly.extras.a2a.server.apps.grpc.A2AExtensionsInterceptor";
+    private static final String GRPC_HANDLER_CLASS = "org.wildfly.a2a.jakarta.grpc.WildFlyGrpcHandler";
+    private static final String GRPC_INTERCEPTOR_CLASS = "org.wildfly.a2a.jakarta.grpc.A2AExtensionsInterceptor";
     private static final String GRPC_HANDLER_MODULE = "org.wildfly.a2a.jakarta.grpc";
 
     @Override

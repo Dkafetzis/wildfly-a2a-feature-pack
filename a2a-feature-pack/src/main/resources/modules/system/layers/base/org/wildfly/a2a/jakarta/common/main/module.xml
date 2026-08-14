@@ -3,22 +3,23 @@
   ~ Copyright The WildFly Authors
   ~ SPDX-License-Identifier: Apache-2.0
   -->
-<module xmlns="urn:jboss:module:1.9" name="org.wildfly.extension.a2a.injection">
+<module xmlns="urn:jboss:module:1.9" name="org.wildfly.a2a.jakarta.common">
 
     <properties>
         <property name="jboss.api" value="private"/>
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly.a2a:wildfly-a2a-injection}"/>
+        <artifact name="${org.wildfly.a2a:a2a-jakarta-common}"/>
     </resources>
 
     <dependencies>
+        <module name="jakarta.annotation.api"/>
         <module name="jakarta.enterprise.api"/>
+        <module name="jakarta.enterprise.concurrent.api"/>
         <module name="jakarta.inject.api"/>
 
-        <module name="org.wildfly.a2a.jakarta.grpc" optional="true"/>
-        <module name="org.wildfly.a2a.jakarta.jsonrpc.web" optional="true"/>
-        <module name="org.wildfly.a2a.jakarta.rest.web" optional="true"/>
+        <module name="org.a2aproject.sdk.server-common"/>
+        <module name="org.slf4j"/>
     </dependencies>
 </module>
