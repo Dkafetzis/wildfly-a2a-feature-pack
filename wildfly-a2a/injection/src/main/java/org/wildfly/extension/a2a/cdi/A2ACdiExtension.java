@@ -23,12 +23,20 @@ public class A2ACdiExtension implements Extension {
     void afterTypeDiscovery(@Observes AfterTypeDiscovery event, BeanManager beanManager) {
         ClassLoader classLoader = getClass().getClassLoader();
 
+        // Shared HTTP routing filters. They dispatch an incoming request to the versioned resource path of the
+        // A2AVersionProvider selected by the A2A-Version header, so they are required by both HTTP transports.
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.common.AgentCardRoutingFilter", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.common.A2AJsonRpcAcceptFilter", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.common.A2ARestVersionRoutingFilter", classLoader);
+
         // JSON-RPC transport
-        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.jsonrpc.web.A2AServerResource", classLoader);
-        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.jsonrpc.web.A2ARequestFilter", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.jsonrpc.A2AServerResource", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.jsonrpc.JsonRpcVersionProvider_v1_0", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.jsonrpc.JsonRpcMethodProvider_v1_0", classLoader);
 
         // REST transport
-        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.rest.web.A2ARestServerResource", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.rest.A2ARestServerResource", classLoader);
+        tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.rest.RestVersionProvider_v1_0", classLoader);
 
         // gRPC transport
         tryAddAnnotatedType(event, beanManager, "org.wildfly.a2a.jakarta.grpc.GrpcBeanInitializer", classLoader);

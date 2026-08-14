@@ -18,6 +18,7 @@
 
         <module name="com.google.code.gson"/>
         <module name="com.google.protobuf"/>
+        <module name="org.a2aproject.sdk.common"/>
         <module name="org.a2aproject.sdk.jsonrpc-common"/>
         <module name="org.a2aproject.sdk.spec"/>
         <module name="io.grpc-all" optional="true"/>

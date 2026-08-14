@@ -16,6 +16,5 @@
         <package name="org.a2aproject.sdk.transport.rest"/>
         <package name="org.wildfly.a2a.jakarta.common"/>
         <package name="org.wildfly.a2a.jakarta.rest"/>
-        <package name="org.wildfly.a2a.jakarta.rest.web"/>
     </packages>
 </layer-spec>

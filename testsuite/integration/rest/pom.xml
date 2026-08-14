@@ -41,7 +41,7 @@
         <!-- Jakarta implementation for deployment -->
         <dependency>
             <groupId>org.wildfly.a2a</groupId>
-            <artifactId>a2a-jakarta-rest-web</artifactId>
+            <artifactId>a2a-jakarta-rest</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

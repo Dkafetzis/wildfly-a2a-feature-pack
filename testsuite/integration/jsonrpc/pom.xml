@@ -41,7 +41,7 @@
         <!-- Jakarta implementation for deployment -->
         <dependency>
             <groupId>org.wildfly.a2a</groupId>
-            <artifactId>a2a-jakarta-jsonrpc-web</artifactId>
+            <artifactId>a2a-jakarta-jsonrpc</artifactId>
             <scope>test</scope>
         </dependency>
 
