@@ -75,7 +75,8 @@ public class A2AGrpcServiceProcessor implements DeploymentUnitProcessor {
         ServiceName serviceName = support.getCapabilityServiceName(GRPC_SERVER_CAPABILITY);
         ServiceName a2aGrpcServiceName = deploymentUnit.getServiceName().append("a2a-grpc-registration");
 
-        ServiceBuilder<?> builder = phaseContext.getServiceTarget().addService(a2aGrpcServiceName);
+        ServiceBuilder<?> builder = phaseContext.getRequirementServiceTarget().addService();
+        builder.provides(a2aGrpcServiceName);
         Supplier<WildFlyGrpcDeploymentRegistry> registrySupplier = builder.requires(serviceName);
 
         builder.setInstance(new A2AGrpcRegistrationService(deploymentUnit, handlerClass, interceptors, registrySupplier));
@@ -92,21 +93,12 @@ public class A2AGrpcServiceProcessor implements DeploymentUnitProcessor {
     /**
      * A small service that registers the A2A gRPC handler when started, allowing us to properly depend on the gRPC registry service.
      */
-    private static class A2AGrpcRegistrationService implements Service {
-        private final DeploymentUnit deploymentUnit;
-        private final Class<? extends BindableService> handlerClass;
-        private final List<ServerInterceptor> interceptors;
-        private final Supplier<WildFlyGrpcDeploymentRegistry> registrySupplier;
-
-        A2AGrpcRegistrationService(DeploymentUnit deploymentUnit,
-                                   Class<? extends BindableService> handlerClass,
-                                   List<ServerInterceptor> interceptors,
-                                   Supplier<WildFlyGrpcDeploymentRegistry> registrySupplier) {
-            this.deploymentUnit = deploymentUnit;
-            this.handlerClass = handlerClass;
-            this.interceptors = interceptors;
-            this.registrySupplier = registrySupplier;
-        }
+    private record A2AGrpcRegistrationService(
+            DeploymentUnit deploymentUnit,
+            Class<? extends BindableService> handlerClass,
+            List<ServerInterceptor> interceptors,
+            Supplier<WildFlyGrpcDeploymentRegistry> registrySupplier
+    ) implements Service {
 
         @Override
         public void start(StartContext context) {
