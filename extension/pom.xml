@@ -13,7 +13,7 @@
         <version>0.0.1.Alpha1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>wildfly-a2a</artifactId>
+    <artifactId>wildfly-a2a-extension</artifactId>
     <name>WildFly A2A Extension</name>
     <packaging>pom</packaging>
 

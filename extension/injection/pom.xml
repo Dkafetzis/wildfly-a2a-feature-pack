@@ -9,7 +9,7 @@
 
     <parent>
         <groupId>org.wildfly.a2a</groupId>
-        <artifactId>wildfly-a2a</artifactId>
+        <artifactId>wildfly-a2a-extension</artifactId>
         <version>0.0.1.Alpha1-SNAPSHOT</version>
     </parent>
 
@@ -19,10 +19,6 @@
 
     <dependencies>
         <!-- Jakarta EE APIs for CDI extension -->
-        <dependency>
-            <groupId>jakarta.inject</groupId>
-            <artifactId>jakarta.inject-api</artifactId>
-        </dependency>
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
