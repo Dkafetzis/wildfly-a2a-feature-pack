@@ -8,6 +8,8 @@
         <prop name="org.wildfly.category" value="A2A"/>
         <prop name="org.wildfly.description" value="Support for A2A (Agent-to-Agent) Protocol"/>
         <prop name="org.wildfly.stability" value="experimental"/>
+        <prop name="org.wildfly.rule.class" value="org.a2aproject.sdk,org.a2aproject.sdk.spec,org.a2aproject.sdk.spec.util,org.a2aproject.sdk.common,org.a2aproject.sdk.jsonrpc.common.json,org.a2aproject.sdk.server,org.a2aproject.sdk.server.agentexecution,org.a2aproject.sdk.server.events,org.a2aproject.sdk.server.requesthandlers,org.a2aproject.sdk.server.tasks,org.a2aproject.sdk.client,org.a2aproject.sdk.client.config,org.a2aproject.sdk.client.http"/>
+        <prop name="org.wildfly.rule.annotations" value="org.a2aproject.sdk.server"/>
     </props>
     <feature spec="subsystem.a2a"/>
     <packages>

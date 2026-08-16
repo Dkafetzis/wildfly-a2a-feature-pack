@@ -70,6 +70,29 @@ For gRPC support, include the https://github.com/wildfly-extras/wildfly-grpc-fea
 </plugin>
 ----
 
+== Provisioning with WildFly Glow
+
+The layers carry https://github.com/wildfly/wildfly-glow[WildFly Glow] rules, so Glow can derive the
+layer set from a deployment scan instead of a hand-written `<layers>` list. The base `a2a` layer is
+discovered from A2A SDK usage in the deployment, and the client transport layers from the transport
+class the application uses:
+
+[source,bash]
+----
+wildfly-glow scan my-agent.war \
+    --feature-packs=org.wildfly.a2a:wildfly-a2a-feature-pack:0.0.1.Alpha1-SNAPSHOT \
+    --add-ons=a2a-server-jsonrpc \
+    --package-stability-level=experimental \
+    --config-stability-level=experimental
+----
+
+A deployment carries no signal for which _server_ transport it wants, since that is decided by which
+layer is provisioned. The three server layers are therefore offered as add-ons of the `a2a-server`
+family (`a2a-server-jsonrpc`, `a2a-server-grpc`, `a2a-server-http-json`) and must be selected with
+`--add-ons`. The client layers form the `a2a-client` family and are additionally auto-detected.
+
+The stability options are required because all A2A layers are `experimental`.
+
 == Layers
 
 The feature-pack provides the following Galleon layers:
@@ -100,6 +123,19 @@ mvn clean test -pl testsuite/integration/jsonrpc   # JSON-RPC only
 mvn clean test -pl testsuite/integration/grpc      # gRPC only
 mvn clean test -pl testsuite/integration/http-json # HTTP-JSON only
 ----
+
+By default each module provisions the server from a hardcoded layer list. Passing `-Dts.glow`
+activates the `glow.profile` in the JSON-RPC and REST modules, which instead scans the Arquillian
+deployments with WildFly Glow and provisions from the discovered layer set, asserting it via
+`expected-discovery`. This is what verifies the `org.wildfly.rule.*` metadata in the layer specs:
+
+[source,bash]
+----
+mvn clean install -Dts.glow
+----
+
+The gRPC module is not part of that profile: it additionally requires the gRPC feature-pack and its
+`grpc` layer, which no A2A layer depends on and which Glow cannot infer from a deployment.
 
 == Running the TCK
 

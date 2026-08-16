@@ -58,29 +58,6 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <configuration>
-                    <feature-packs>
-                        <feature-pack>
-                            <groupId>org.wildfly</groupId>
-                            <artifactId>wildfly-galleon-pack</artifactId>
-                            <version>${version.org.wildfly}</version>
-                        </feature-pack>
-                        <feature-pack>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>wildfly-a2a-feature-pack</artifactId>
-                            <version>${project.version}</version>
-                        </feature-pack>
-                    </feature-packs>
-                    <galleon-options>
-                        <stability-level>${wildfly.a2a.stability}</stability-level>
-                    </galleon-options>
-                    <layers>
-                        <layer>ee-core-profile-server</layer>
-                        <layer>jaxrs</layer>
-                        <layer>microprofile-config</layer>
-                        <layer>a2a-server-jsonrpc</layer>
-                    </layers>
-                </configuration>
                 <executions>
                     <execution>
                         <id>test-provisioning</id>
@@ -88,6 +65,29 @@
                             <goal>provision</goal>
                         </goals>
                         <phase>test-compile</phase>
+                        <configuration>
+                            <feature-packs>
+                                <feature-pack>
+                                    <groupId>org.wildfly</groupId>
+                                    <artifactId>wildfly-galleon-pack</artifactId>
+                                    <version>${version.org.wildfly}</version>
+                                </feature-pack>
+                                <feature-pack>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>wildfly-a2a-feature-pack</artifactId>
+                                    <version>${project.version}</version>
+                                </feature-pack>
+                            </feature-packs>
+                            <galleon-options>
+                                <stability-level>${wildfly.a2a.stability}</stability-level>
+                            </galleon-options>
+                            <layers>
+                                <layer>ee-core-profile-server</layer>
+                                <layer>jaxrs</layer>
+                                <layer>microprofile-config</layer>
+                                <layer>a2a-server-jsonrpc</layer>
+                            </layers>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -97,4 +97,57 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Provision the server from a WildFly Glow deployment scan instead of the hardcoded layer
+             list above. This is what exercises the org.wildfly.rule.* metadata in the A2A layer specs:
+             expected-discovery pins the layer set Glow resolves, and the tests then run against the
+             server provisioned from it. Activate with -Dts.glow. -->
+        <profile>
+            <id>glow.profile</id>
+            <activation>
+                <property>
+                    <name>ts.glow</name>
+                </property>
+            </activation>
+            <properties>
+                <glow.phase>test-compile</glow.phase>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.glow</groupId>
+                        <artifactId>wildfly-glow-arquillian-plugin</artifactId>
+                        <configuration>
+                            <expected-discovery>[a2a, a2a-client-grpc, a2a-client-http-json, a2a-client-jsonrpc, a2a-server-jsonrpc, cdi, ee-integration, jaxrs, microprofile-config]==>ee-core-profile-server,a2a-client-grpc,a2a-client-http-json,a2a-client-jsonrpc,a2a-server-jsonrpc,jaxrs,microprofile-config</expected-discovery>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <executions>
+                            <!-- Disable the hardcoded-layers provisioning -->
+                            <execution>
+                                <id>test-provisioning</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>glow-provisioning</id>
+                                <goals>
+                                    <goal>provision</goal>
+                                </goals>
+                                <phase>test-compile</phase>
+                                <configuration>
+                                    <provisioning-file>${project.build.directory}/glow-scan/provisioning.xml</provisioning-file>
+                                    <galleon-options>
+                                        <stability-level>${wildfly.a2a.stability}</stability-level>
+                                    </galleon-options>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

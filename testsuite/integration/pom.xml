@@ -19,6 +19,9 @@
         <jboss.home>${project.build.directory}/wildfly</jboss.home>
         <!-- Server arguments for A2A subsystem stability level -->
         <server.jboss.args>--stability=${wildfly.a2a.stability}</server.jboss.args>
+        <!-- The Glow scan is off by default; the glow.profile in the rest and jsonrpc modules
+             (activated by -Dts.glow) switches it on to test the org.wildfly.rule.* layer metadata. -->
+        <glow.phase>none</glow.phase>
     </properties>
 
     <dependencyManagement>
@@ -214,7 +217,7 @@
                             <goals>
                                 <goal>scan</goal>
                             </goals>
-                            <phase>test-compile</phase>
+                            <phase>${glow.phase}</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -223,7 +226,6 @@
                     <artifactId>wildfly-maven-plugin</artifactId>
                     <version>${version.wildfly.maven.plugin}</version>
                     <configuration>
-                        <provisioning-file>${project.build.directory}/glow-scan/provisioning.xml</provisioning-file>
                         <jboss-home>${jboss.home}</jboss-home>
                         <provisioning-dir>${jboss.home}</provisioning-dir>
                     </configuration>
