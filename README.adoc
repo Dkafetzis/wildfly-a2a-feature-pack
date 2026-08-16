@@ -125,11 +125,11 @@ mvn clean test -pl testsuite/integration/http-json # HTTP-JSON only
 ----
 
 The JSON-RPC and REST modules each provision *two* servers and run their suite against both:
-`target/wildfly` from the hardcoded layer list, and `target/wildfly-glow` from the layer set WildFly
+`target/wildfly-layers` from the hardcoded layer list, and `target/wildfly-glow` from the layer set WildFly
 Glow discovers by scanning the Arquillian deployment. The discovered set is pinned with
 `expected-discovery`, so a regression in the `org.wildfly.rule.*` metadata of the layer specs fails
-the build. Both run under a plain `mvn clean install`; results are told apart by the `-glow` suffix
-on the surefire reports.
+the build. Both run under a plain `mvn clean install`; results are told apart by the `-layers` and `-glow`
+suffixes on the surefire reports.
 
 The gRPC module provisions only the hardcoded server: it additionally requires the gRPC feature-pack
 and its `grpc` layer, which no A2A layer depends on and which Glow cannot infer from a deployment.
