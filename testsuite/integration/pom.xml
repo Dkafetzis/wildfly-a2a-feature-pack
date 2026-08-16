@@ -19,9 +19,9 @@
         <jboss.home>${project.build.directory}/wildfly</jboss.home>
         <!-- Server arguments for A2A subsystem stability level -->
         <server.jboss.args>--stability=${wildfly.a2a.stability}</server.jboss.args>
-        <!-- The Glow scan is off by default; the glow.profile in the rest and jsonrpc modules
-             (activated by -Dts.glow) switches it on to test the org.wildfly.rule.* layer metadata. -->
-        <glow.phase>none</glow.phase>
+        <!-- Second server, provisioned from the WildFly Glow deployment scan; the rest and jsonrpc
+             modules run their suite against both this and ${jboss.home}. -->
+        <jboss.home.glow>${project.build.directory}/wildfly-glow</jboss.home.glow>
     </properties>
 
     <dependencyManagement>
@@ -217,7 +217,7 @@
                             <goals>
                                 <goal>scan</goal>
                             </goals>
-                            <phase>${glow.phase}</phase>
+                            <phase>test-compile</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -244,6 +244,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
                         <systemPropertyVariables combine.children="append">
+                            <jboss.dist>${jboss.home}</jboss.dist>
                             <jboss.install.dir>${jboss.home}</jboss.install.dir>
                             <server.jvm.args>-Dtest.agent.card.port=8080</server.jvm.args>
                             <jboss.args>${server.jboss.args}</jboss.args>
