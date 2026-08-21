@@ -121,7 +121,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <executions>
                     <!-- Runs the same suite a second time against the Glow-provisioned server, so the
-                         discovered layer set is shown to produce a working server, not merely to match. -->
+                         discovered layer set is shown to produce a working server, not merely to match.
+                         Note that jboss-parent's java*-test-classpath profiles configure the default-test
+                         execution by id, so this one does not pick up their classesDirectory tweaks; that
+                         is harmless while the module has no src/main classes. -->
                     <execution>
                         <id>glow.surefire</id>
                         <phase>test</phase>

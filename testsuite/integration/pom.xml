@@ -227,14 +227,15 @@
                     <artifactId>wildfly-maven-plugin</artifactId>
                     <version>${version.wildfly.maven.plugin}</version>
                     <configuration>
-                        <jboss-home>${jboss.home.layers}</jboss-home>
                         <provisioning-dir>${jboss.home.layers}</provisioning-dir>
                     </configuration>
                     <executions>
+                        <!-- The modules redeclare this execution id to add their feature-packs and layers;
+                             Maven merges the goal lists, so this must name the same goal they do. -->
                         <execution>
                             <id>test-provisioning</id>
                             <goals>
-                                <goal>package</goal>
+                                <goal>provision</goal>
                             </goals>
                             <phase>test-compile</phase>
                         </execution>
