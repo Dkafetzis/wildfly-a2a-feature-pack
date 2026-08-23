@@ -18,5 +18,12 @@
 
         <module name="org.a2aproject.sdk.common"/>
         <module name="com.google.code.gson"/>
+        <!--
+            Compat03Fields decides whether to emit the v0.3 agent-card fields (url,
+            preferredTransport, additionalInterfaces) by doing Class.forName on AgentCard_v0_3 from
+            this module's class loader, so the v0.3 spec has to be visible from here or the fields
+            are silently dropped. Optional: present only when a v0.3 layer is provisioned.
+        -->
+        <module name="org.a2aproject.sdk.compat03-spec" optional="true"/>
     </dependencies>
 </module>
