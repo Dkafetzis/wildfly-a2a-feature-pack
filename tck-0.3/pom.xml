@@ -22,6 +22,12 @@
 
     <properties>
         <jboss.home>${project.build.directory}/wildfly</jboss.home>
+        <!--
+            Host:port the TCK reaches the SUT on. The v0.3 TCK resolves every transport endpoint
+            from the URLs the agent card advertises, so these have to match the running server.
+        -->
+        <sut.host>localhost:8080</sut.host>
+        <sut.grpc.host>localhost:9555</sut.grpc.host>
     </properties>
 
     <dependencies>
@@ -89,6 +95,17 @@
                         <layer>a2a-server-http-json-0.3</layer>
                         <layer>grpc</layer>
                     </layers>
+                    <!--
+                        AgentCardProducer_v0_3 in a2a-compat-0.3-tck-server builds the advertised
+                        endpoints from these env vars, defaulting to the Quarkus dev URL
+                        (http://localhost:9999). Point them at the WildFly deployment instead,
+                        otherwise every TCK transport client dials a port nothing is listening on.
+                    -->
+                    <env>
+                        <SUT_JSONRPC_URL>http://${sut.host}/a2a_jsonrpc_v0.3</SUT_JSONRPC_URL>
+                        <SUT_REST_URL>http://${sut.host}/a2a_rest_v0.3</SUT_REST_URL>
+                        <SUT_GRPC_URL>http://${sut.grpc.host}</SUT_GRPC_URL>
+                    </env>
                     <jboss-home>${jboss.home}</jboss-home>
                     <name>ROOT.war</name>
                     <provisioning-dir>${jboss.home}</provisioning-dir>
