@@ -27,6 +27,13 @@
         <module name="org.a2aproject.sdk.spec"/>
         <module name="org.a2aproject.sdk.spec-grpc"/>
         <module name="io.smallrye.reactive.mutiny.zero"/>
+        <!--
+            BasePushNotificationSender discovers PushNotificationPayloadFormatter beans through CDI.
+            The v0.3 formatter lives in compat03-server-conversion, and Weld only resolves beans from
+            bean archives this module can see, so the dependency has to point this way. Optional: the
+            module is present only when a v0.3 layer is provisioned.
+        -->
+        <module name="org.a2aproject.sdk.compat03-server-conversion" optional="true"/>
         <!-- Weld modules for proper proxy generation with package-private access -->
         <module name="org.jboss.weld.api"/>
         <module name="org.jboss.weld.core"/>
