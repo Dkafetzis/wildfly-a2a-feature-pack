@@ -21,6 +21,8 @@
     <description>TCK server for running the A2A protocol TCK against WildFly with the A2A feature-pack</description>
 
     <properties>
+        <!-- A TCK harness, not published API: keep it out of the aggregated Javadoc and of any javadoc jar. -->
+        <maven.javadoc.skip>true</maven.javadoc.skip>
         <jboss.home>${project.build.directory}/wildfly</jboss.home>
     </properties>
 
