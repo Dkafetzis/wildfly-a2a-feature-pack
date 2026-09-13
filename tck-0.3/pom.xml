@@ -21,6 +21,8 @@
     <description>TCK server for running the legacy A2A protocol v0.3 TCK against WildFly with the A2A feature-pack</description>
 
     <properties>
+        <!-- A TCK harness, not published API: keep it out of the aggregated Javadoc and of any javadoc jar. -->
+        <maven.javadoc.skip>true</maven.javadoc.skip>
         <jboss.home>${project.build.directory}/wildfly</jboss.home>
         <!--
             Host:port the TCK reaches the SUT on. The v0.3 TCK resolves every transport endpoint
