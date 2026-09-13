@@ -261,6 +261,7 @@
     </build>
 
     <modules>
+        <module>client</module>
         <module>jsonrpc</module>
         <module>rest</module>
         <module>grpc</module>
